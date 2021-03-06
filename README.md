@@ -20,7 +20,7 @@ colcon build --packages-select bwt901cl_pkg
 ### run
 
 ```
-まだ
+ros2 run bwt901cl_pkg imu_bwt901cl
 ```
 
 ### 注意点

@@ -2,15 +2,15 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu, Temperature, MagneticField
 
-from src.bwt901cl import BWT901CL
+from .src.bwt901cl import BWT901CL
 
 class Imu901cl(Node):
-    def __init__(self):
+    def __init__(self, time_interval=1.0):
         super().__init__('imu_bwt901cl')
         self.pub_imu = self.create_publisher(Imu, '/sensor/bwt901cl/imu', 10)
         self.pub_mag = self.create_publisher(MagneticField, '/sensor/bwt901cl/MagneticField', 10)
         self.pub_tmp = self.create_publisher(Temperature, '/sensor/bwt901cl/Temperature', 10)
-        self.tmr = self.create_timer(1.0, self.timer_callback)
+        self.tmr = self.create_timer(time_interval, self.timer_callback)
         self.imu_sensor =  BWT901CL("/dev/ttyUSB0")
 
     def timer_callback(self):
@@ -26,7 +26,7 @@ def main(args=None):
     print('Hi from bwt901cl_pkg.')
 
     rclpy.init(args=args)
-    node_imu_bwt901cl = Imu901cl()
+    node_imu_bwt901cl = Imu901cl(time_interval=0.5)
     rclpy.spin(node_imu_bwt901cl)
 
     node_imu_bwt901cl.destroy_node()
