@@ -3,9 +3,9 @@
 <package format="3">
   <name>bwt901cl_pkg</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="dorebom.b@gmail.com">developer</maintainer>
-  <license>TODO: License declaration</license>
+  <description>Package for using sensor module BWT901CL</description>
+  <maintainer email="dorebom.b@gmail.com">dorebom</maintainer>
+  <license>MIT License</license>
 
   <depend>rclpy</depend>
 
